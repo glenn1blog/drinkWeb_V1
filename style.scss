@@ -1,3 +1,136 @@
+$color-black: #111;
+$color-gold: rgb(255, 225, 89);
+
+@mixin nav {
+    color: white;
+    display: inline-block;
+    font-size: 0.7em;
+    width: 120px;
+
+    img {
+        width: 30px;
+        float: left;
+        padding-right: 7px;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $color-black;
+}
+
+// 導覽區塊
 #nav {
-    background-color: #999;
+    background-color: $color-black;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    color: $color-gold;
+    height: 10vh;
+    padding: 15px;
+    position: fixed;
+    width: 100vw;
+    z-index: 10;
+
+    #logo {
+        font-size: 1.3em;
+        padding: 0 15px;
+
+        #logo-zh {
+            font-size: 0.6em;
+            letter-spacing: 7px;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        @include nav;
+    }
+
+    // 滑入時 修改 span 樣式
+    a:hover span {
+        opacity: 0.5;
+    }
+
+    nav {
+        padding-top: 15px;
+    }
+}
+
+// 標題
+.title {
+    @include nav;
+}
+
+// 橫幅
+#banner {
+    height: 90vh;
+    width: 100vw;
+    background-image: url("https://images.unsplash.com/photo-1504502350688-00f5d59bbdeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+    background-size: cover;
+}
+
+// 關於我
+#about {
+    height: 90vh;
+    // 父元素 相對定位
+    position: relative;
+
+}
+
+.bg {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    // 濾鏡：模糊、亮度
+    filter: blur(2px) brightness(30%);
+    // 子元素 絕對定位
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+.bg-about {
+    background-image: url(img/about.jpg);
+}
+
+.bg-location {
+    background-image: url(img/about.jpg);
+}
+
+#location {
+    min-height: 90vh;
+    position: relative;
+    
+        #location-container{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 40px;
+
+            .location-title {
+                text-align: right;
+
+                .location-text {
+                    color: white;
+                    font-size: 0.7em;
+                    text-align: center;
+                    display: inline-block;
+                }
+            }
+        }
+        .bg-pic {
+                width: 100%;
+            }
+}
+
+// 內容區塊 container
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
 }
