@@ -26,7 +26,8 @@ mixin location-box(nameZh, nameEg, img)
                 br
                 span=nameEg
             img(src="img/location.png", alt="據點")
-        img(src="img/" + img + ".png", alt="據點" class="bg-pic")
+        div(class="location-img-box")
+            img(src="img/" + img + ".png", alt="據點" class="bg-pic")
 
 <!DOCTYPE html>
 html(lang="en")
@@ -35,11 +36,13 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title 獅子堂 | 首頁
         link(rel="stylesheet", href="style.css")
+        //- AOS CDN
+        link(rel="stylesheet", href="https://unpkg.com/aos@next/dist/aos.css")
     body
         header(id="nav")
-            div(id="logo") LION SUGAR
+            div(class="logo") LION SUGAR
                 br
-                span 獅子堂黑糖專賣
+                span(class="logo-zh") 獅子堂黑糖專賣
             nav
                 +nav-a("home", "關於我們", "ABOUT")
                 +nav-a("location", "全球據點", "LOCATIONS")
@@ -63,5 +66,30 @@ html(lang="en")
                     +location-box("香港", "HongKong", "location_hongkong")
                     +location-box("新加坡", "Singapore", "location_singapore")
 
-        +title("hot", "熱門經典", "CLASSICAL")
-        +title("contact", "加盟專區", "FRANCHISEE")
+        section(id="classical")
+            div(class="bg bg-classical")
+            div(class="container")
+                +title("hot", "熱門經典", "CLASSICAL")
+                div(id="classical-box")
+                    div(class="logo") LION SUGAR
+                        br
+                        span(class="logo-zh") 獅子堂黑糖專賣
+                    img(src="img/drink.png", alt="飲料" data-aos="slide-up" data-aos-duration="1000" data-aos-delay="100")
+
+        
+        section(id="franchisee")
+            div(class="bg bg-classical")
+            div(class="container")
+                +title("contact", "加盟專區", "FRANCHISEE")
+                div(class="franchisee-box" data-aos="zoom-in" data-aos-duration="1000")
+                    a(href="")
+                        div(class="logo") LION BEER
+                                br
+                                span(class="logo-zh") 獅子堂啤酒專賣
+                        h3 加盟諮詢請入內
+
+
+
+        //- AOS CDN
+        script(src="https://unpkg.com/aos@next/dist/aos.js")
+        script AOS.init();
